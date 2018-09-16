@@ -24,22 +24,29 @@
  * Domain Path:       /languages
  */
 
-namespace PluginName;
-
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-// We load Composer's autoload file
-require_once plugin_dir_path( __FILE__ ) . 'vendor/autoload.php';
+// If we haven't loaded this plugin from Composer we need to add our own autoloader
+if (!class_exists('Vendor\PluginName')) {
+    // Get a reference to our PSR-4 Autoloader function that we can use to add our Vendor namespace.
+    $autoloader = require_once 'autoload.php';
+
+    // Use the autoload function to setup our class mapping
+    $autoloader('Vendor\\PluginName\\', __DIR__ . '/src/Vendor/PluginName/');
+}
+
+// We load Composer's autoload file, add incase of composer use
+//require_once plugin_dir_path( __FILE__ ) . 'vendor/autoload.php';
 
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-plugin-name-activator.php
  */
 function activate_plugin_name() {
-	utils\Activator::activate();
+	\Vendor\PluginName\Utils\Activator::activate();
 }
 
 /**
@@ -47,11 +54,11 @@ function activate_plugin_name() {
  * This action is documented in includes/class-plugin-name-deactivator.php
  */
 function deactivate_plugin_name() {
-	utils\Deactivator::deactivate();
+	\Vendor\PluginName\Utils\Deactivator::deactivate();
 }
 
-register_activation_hook( __FILE__, '\PluginName\activate_plugin_name' );
-register_deactivation_hook( __FILE__, '\PluginName\deactivate_plugin_name' );
+register_activation_hook( __FILE__, '\Vendor\PluginName\activate_plugin_name' );
+register_deactivation_hook( __FILE__, '\Vendor\PluginName\deactivate_plugin_name' );
 
 /**
  * Begins execution of the plugin.

@@ -14,11 +14,16 @@
 			"name" : "Antonio Villegas",
 			"email" : "antonio.villegas@neliosoftware.com",
 			"role" : "Developer"
+		},
+		{
+			"name" : "Milind Singh",
+			"email" : "milind7@live.com",
+			"role" : "Developer"
 		}
 	],
 	"autoload" : {
 		"psr-4" : {
-			"PluginName\\" : "src"
+			"Vendor\\PluginName\\" : "src/Vendor/PluginName"
 		}
 	},
 	"require" : {

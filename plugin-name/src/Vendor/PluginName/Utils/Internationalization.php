@@ -10,7 +10,7 @@
  * @since      1.0.0
  */
 
-namespace PluginName\utils;
+namespace Vendor\PluginName\Utils;
 
 /**
  * Define the internationalization functionality.

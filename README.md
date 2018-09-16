@@ -64,9 +64,11 @@ that covers the Apache 2.0 License used by
 
 # Credits
 
-This simple project is a basically a refactoring of the work created by [Tom
+- This simple project is a basically a refactoring of the work created by [Tom
 McFarlin](http://twitter.com/tommcfarlin/) and others: [WordPress Plugin
 Boilerplate](https://github.com/DevinVinson/WordPress-Plugin-Boilerplate).
+- Autoloader based on the blog post by [Joe Lambert](http://www.joelambert.co.uk/article/creating-a-psr4-wordpress-plugin/).
+- Forked from [David Aguilera](https://github.com/davilera/WordPress-Plugin-Boilerplate-with-PSR-4/).
 
 ## Documentation, FAQs, and More
 
