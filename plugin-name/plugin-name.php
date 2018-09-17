@@ -26,11 +26,11 @@
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
-	die;
+    die;
 }
 
 // If we haven't loaded this plugin from Composer we need to add our own autoloader
-if (!class_exists('Vendor\PluginName')) {
+if (!class_exists('Vendor\PluginName\Main')) {
     // Get a reference to our PSR-4 Autoloader function that we can use to add our Vendor namespace.
     $autoloader = require_once 'autoload.php';
 
@@ -46,7 +46,7 @@ if (!class_exists('Vendor\PluginName')) {
  * This action is documented in includes/class-plugin-name-activator.php
  */
 function activate_plugin_name() {
-	\Vendor\PluginName\Utils\Activator::activate();
+    \Vendor\PluginName\Utils\Activator::activate();
 }
 
 /**
@@ -54,11 +54,11 @@ function activate_plugin_name() {
  * This action is documented in includes/class-plugin-name-deactivator.php
  */
 function deactivate_plugin_name() {
-	\Vendor\PluginName\Utils\Deactivator::deactivate();
+    \Vendor\PluginName\Utils\Deactivator::deactivate();
 }
 
-register_activation_hook( __FILE__, '\Vendor\PluginName\activate_plugin_name' );
-register_deactivation_hook( __FILE__, '\Vendor\PluginName\deactivate_plugin_name' );
+register_activation_hook( __FILE__, 'activate_plugin_name' );
+register_deactivation_hook( __FILE__, 'deactivate_plugin_name' );
 
 /**
  * Begins execution of the plugin.
@@ -70,7 +70,7 @@ register_deactivation_hook( __FILE__, '\Vendor\PluginName\deactivate_plugin_name
  * @since 1.0.0
  */
 function run_plugin_name() {
-	$plugin = new Main();
-	$plugin->run();
+    $plugin = new \Vendor\PluginName\Main();
+    $plugin->run();
 }
 run_plugin_name();
